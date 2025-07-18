@@ -1,9 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
+using Web_API_Versioning.Model;
 
-namespace Web_API_Versioning.Controllers
+namespace Web_API_Versioning.V2.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("V2/[controller]")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -18,14 +19,14 @@ namespace Web_API_Versioning.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        [HttpGet(Name = "GetWeatherForecastV2")]
+        public IEnumerable<WeatherForecastV2> Get()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            return Enumerable.Range(1, 5).Select(index => new WeatherForecastV2
             {
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
                 TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+                SummaryThings = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
         }
