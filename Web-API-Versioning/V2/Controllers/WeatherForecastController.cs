@@ -3,22 +3,22 @@ using Microsoft.AspNetCore.Mvc;
 namespace Web_API_Versioning.API.V1.Controllers
 {
     [ApiController]
-    [Route("api/V1/[controller]")]
-    public class WeatherForecastV1Controller : ControllerBase
+    [Route("api/V2/[controller]")]
+    public class WeatherForecastControllerV2 : ControllerBase
     {
         private static readonly string[] Summaries = new[]
         {
-            "Freezing", "Bracing", "Chilly"
+          "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        private readonly ILogger<WeatherForecastV1Controller> _logger;
+        private readonly ILogger<WeatherForecastControllerV2> _logger;
 
-        public WeatherForecastV1Controller(ILogger<WeatherForecastV1Controller> logger)
+        public WeatherForecastControllerV2(ILogger<WeatherForecastControllerV2> logger)
         {
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetWeatherForecastV2")]
+        [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
